@@ -1,0 +1,36 @@
+/* Original black PNGs become white in the dark navigation, without source edits. */
+.brand-lockup { display: inline-flex; align-items: center; gap: 14px; }
+.site-header .menu-toggle { white-space: nowrap; flex-shrink: 0; }
+[data-brand-symbol] { display: inline-flex; flex: 0 0 auto; }
+.ae-symbol { --symbol-height: 30px; display: inline-flex; align-items: center; gap: 2px; height: var(--symbol-height); }
+.ae-symbol img { width: auto; max-width: none; height: 100%; filter: invert(1); }
+.ae-symbol-a { transform: translate(var(--a-x, 0), var(--a-y, 0)) scale(var(--a-scale, 1)); }
+.ae-symbol-e { transform: translate(var(--e-x, 0), var(--e-y, 0)) scale(var(--e-scale, 1)); }
+.mobile-menu { isolation: isolate; overflow-x: clip; }
+.menu-symbol { position: absolute; z-index: -1; inset: 0; display: block; overflow: hidden; opacity: .045; pointer-events: none; }
+.menu-symbol .ae-symbol { --symbol-height: min(78vh, 700px); position: absolute; right: -6%; bottom: -8%; gap: 14px; }
+/* Desktop destinations need room alongside the complete brand lockup. */
+@media (max-width: 1099px) {
+  .site-header .desktop-nav { display: none; }
+  .site-header .menu-toggle { display: block; }
+}
+@media (max-width: 760px) {
+  .brand-lockup { gap: 10px; }
+  .ae-symbol { --symbol-height: 26px; gap: 1px; }
+  .menu-symbol .ae-symbol { --symbol-height: 67vh; }
+}
+@media (max-width: 360px) {
+  .brand-lockup.wordmark { font-size: 20px; letter-spacing: .025em; gap: 8px; }
+  .ae-symbol { --symbol-height: 23px; }
+  .menu-toggle span { margin-left: 6px; }
+}
+
+.site-footer .ae-symbol { --symbol-height: 30px; }
+body[data-theme='company'] .site-footer .ae-symbol img { filter: none; }
+.contact-signature { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.contact-signature .ae-symbol { --symbol-height: 74px; gap: 5px; }
+.contact-signature .wordmark { font-size: 30px; }
+@media (max-width: 760px) {
+  .contact-signature .ae-symbol { --symbol-height: 58px; }
+  .contact-signature .wordmark { font-size: 26px; }
+}

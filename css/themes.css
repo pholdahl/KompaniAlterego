@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Pacifica Condensed';
+  src: url('/assets/fonts/Pacifica%20Condensed%20Regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  color-scheme: dark;
+  --bg: #080a0e;
+  --ink: #f2f0e9;
+  --muted: #a6a9b0;
+  --accent: #88c7ff;
+  --line: #ffffff29;
+  --header-height: 80px;
+  --gutter: clamp(24px, 5vw, 88px);
+  --brand: 'Pacifica Condensed', 'Arial Narrow', sans-serif;
+  --display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+body[data-theme='company'] { color-scheme: light; --bg: #eae8e0; --ink: #20221f; --muted: #5c5d57; --accent: #647558; --line: #20221f35; }
+body[data-theme='contact'] { --bg: #080909; --accent: #f2f0e9; }

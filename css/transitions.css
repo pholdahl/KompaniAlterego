@@ -1,0 +1,4 @@
+/* A single curtain crosses the stage; the global header stays in place. */
+.scene-curtain { position: fixed; z-index: 20; inset: var(--header-height) 0 0; background: #10234c; pointer-events: none; visibility: hidden; }
+.scene-curtain.is-running { visibility: visible; pointer-events: auto; }
+.scene-curtain.is-blackout { background: #080909; }

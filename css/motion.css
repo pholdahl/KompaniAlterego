@@ -1,0 +1,80 @@
+/* GALAXY EMPIRE — change the motion character here, not in page styles. */
+:root {
+  --motion-fast: 400ms;
+  --motion-medium: 700ms;
+  --motion-slow: 1000ms;
+  --motion-distance-small: 12px;
+  --motion-distance-medium: 22px;
+  --motion-scale-start: 1.025;
+  --motion-stagger: 100ms;
+  --motion-ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* Nothing is hidden until motion.js has successfully set up its observers.
+   Removing `reveal` makes an element static, even inside a stagger group. */
+.motion-ready .reveal {
+  transition: opacity var(--motion-medium) var(--motion-ease),
+    translate var(--motion-medium) var(--motion-ease),
+    scale var(--motion-slow) var(--motion-ease);
+  transition-delay: calc(var(--motion-order, 0) * var(--motion-stagger));
+}
+.motion-ready .reveal:not(.is-revealed) { opacity: 0; }
+.motion-ready .reveal.reveal-up:not(.is-revealed) { translate: 0 var(--motion-distance-medium); }
+.motion-ready .reveal.reveal-scale:not(.is-revealed) { scale: var(--motion-scale-start); }
+/* Independent transform properties preserve the play icon's existing centering. */
+.motion-ready .reveal:focus-within { opacity: 1; translate: none; scale: none; transition-delay: 0ms; }
+
+/* This wrapper only clips the moving image; its original size stays unchanged. */
+.motion-image-frame { display: block; overflow: clip; }
+.motion-ready .parallax-image.is-parallax-active {
+  transform: translateY(var(--parallax-y, 0px)) scale(var(--parallax-scale, 1));
+}
+
+/* Counters keep their final text and width. Only the aria-hidden overlay counts.
+   This avoids changing accessible values or shifting long numbers sideways. */
+.motion-counter.is-counting { position: relative; }
+.motion-counter.is-counting > .counter-final { opacity: 0; }
+.counter-animated { position: absolute; inset: 0; }
+
+/* Draw each EXISTING row divider. A small travelling node fades out afterwards,
+   leaving the original timeline appearance; there is no repeating animation. */
+.motion-ready .timeline-reveal > li { position: relative; border-top-color: transparent; }
+.motion-ready .timeline-reveal > li::before {
+  content: ''; position: absolute; inset: -1px 0 auto; height: 1px;
+  background: var(--line); transform: scaleX(0); transform-origin: left;
+  transition: transform var(--motion-medium) var(--motion-ease);
+  transition-delay: calc(var(--motion-order, 0) * var(--motion-stagger));
+}
+.motion-ready .timeline-reveal > li > * {
+  opacity: 0; translate: 0 var(--motion-distance-small);
+  transition: opacity var(--motion-medium) var(--motion-ease), translate var(--motion-medium) var(--motion-ease);
+  transition-delay: calc((var(--motion-order, 0) + 1) * var(--motion-stagger));
+}
+.motion-ready .timeline-reveal > li.is-revealed::before { transform: scaleX(1); }
+.motion-ready .timeline-reveal > li.is-revealed > * { opacity: 1; translate: none; }
+.motion-ready .timeline-reveal > li.is-revealed::after {
+  content: ''; position: absolute; left: 0; top: -3px; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--accent); opacity: 0;
+  animation: timeline-node var(--motion-slow) var(--motion-ease) both;
+  animation-delay: calc(var(--motion-order, 0) * var(--motion-stagger));
+}
+@keyframes timeline-node {
+  0% { opacity: 0; transform: scale(.6); }
+  30% { opacity: 1; transform: scale(1.15); }
+  65% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+/* CSS also handles a preference change immediately, before the JS cleanup. */
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .reveal,
+  .motion-ready .timeline-reveal > li > * {
+    opacity: 1 !important; translate: none !important; scale: none !important;
+    transition: none !important;
+  }
+  .motion-ready .timeline-reveal > li::before { transform: none; transition: none; }
+  .motion-ready .timeline-reveal > li::after { animation: none !important; }
+  .motion-ready .parallax-image { transform: none !important; }
+  .motion-counter.is-counting > .counter-final { opacity: 1; }
+  .counter-animated { display: none; }
+}

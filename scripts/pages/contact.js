@@ -1,0 +1,5 @@
+import { logoSymbol } from '../brand.js';
+import { contact } from '../data.js';
+export function contactPage() {
+  return `<section class="contact-page"><div class="contact-signature">${logoSymbol()}<p class="wordmark">KOMPANI ALTEREGO</p></div><h1>La oss<br>snakke<span>.</span></h1><h2 class="eyebrow">Booking / Kontakt</h2><div class="contact-details">${contact.email ? `<a aria-label="E-post: ${contact.email}" href="mailto:${contact.email}">${contact.email}</a>` : '<p>E-post kommer</p>'}${contact.phone ? `<a aria-label="Telefon: ${contact.phone}" href="tel:${contact.phone.replaceAll(' ', '')}">${contact.phone}</a>` : '<p>Telefon kommer</p>'}</div><p class="contact-context">Galaxy Empire · DKS · Andre arrangører</p><ul class="social-links">${['instagram', 'youtube'].filter(key => contact[key]).map(key => `<li><a href="${contact[key]}" target="_blank" rel="noopener noreferrer" aria-label="Kompani Alterego på ${key === 'youtube' ? 'YouTube' : 'Instagram'} (åpnes i ny fane)">${key} ↗</a></li>`).join('')}</ul></section>`;
+}

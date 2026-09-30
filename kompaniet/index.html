@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080909">
+  <meta name="description" content="Kompani Alterego. Teater, nye virkeligheter og menneskene imellom. Opplev forestillingen Galaxy Empire.">
+  <title>Galaxy Empire — Kompani Alterego</title>
+  <link rel="stylesheet" href="/styles.css?v=6">
+  <script type="module" src="/index.js"></script>
+</head>
+<body data-theme="galaxy">
+  <a class="skip-link" href="#main">Hopp til innhold</a>
+  <header class="site-header">
+    <a class="brand-lockup wordmark" href="/" data-route aria-label="Kompani Alterego — hjem"><span data-brand-symbol></span><span>KOMPANI ALTEREGO</span></a>
+    <nav class="desktop-nav" aria-label="Hovedmeny">
+      <a href="/galaxy-empire/" data-route>Galaxy Empire</a>
+      <a href="/kompaniet/" data-route>Kompaniet</a>
+      <a href="/kontakt/" data-route>Kontakt</a>
+    </nav>
+    <button class="menu-toggle" aria-haspopup="dialog" aria-controls="mobile-menu" aria-expanded="false">Meny <span aria-hidden="true">＋</span></button>
+  </header>
+  <dialog class="mobile-menu" id="mobile-menu" aria-label="Hovedmeny">
+    <div class="menu-symbol" data-brand-symbol aria-hidden="true"></div>
+    <div class="menu-heading"><a class="brand-lockup wordmark" href="/" data-route aria-label="Kompani Alterego — hjem"><span data-brand-symbol></span><span>KOMPANI ALTEREGO</span></a><button data-close-menu aria-label="Lukk meny">Lukk ×</button></div>
+    <nav aria-label="Mobilmeny">
+      <a href="/galaxy-empire/" data-route><span>01</span>Galaxy Empire</a>
+      <a href="/kompaniet/" data-route><span>02</span>Kompaniet</a>
+      <a href="/kontakt/" data-route><span>03</span>Kontakt</a>
+    </nav>
+    <p class="eyebrow">Scenekunst. Andre virkeligheter.</p>
+  </dialog>
+  <main id="main" tabindex="-1"></main>
+  <div class="scene-curtain" aria-hidden="true"></div>
+  <div class="sr-only" role="status" id="route-status"></div>
+  <noscript><p class="noscript">Denne prototypen trenger JavaScript for å vise sidene. Aktiver JavaScript og last siden på nytt.</p></noscript>
+</body>
+</html>
