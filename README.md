@@ -8,6 +8,8 @@ python3 -m http.server 8000
 
 Open http://localhost:8000. JavaScript modules require HTTP; opening the HTML with `file://` is not supported.
 
+Github pages deployment test
+
 ## MOTION SYSTEM
 
 Galaxy Empire scroll motion is optional. Page transitions, the hero and company
