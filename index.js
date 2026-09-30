@@ -4,6 +4,7 @@ import { companyPage, mountCompany } from './scripts/pages/company.js';
 import { contactPage } from './scripts/pages/contact.js';
 import { changeScene } from './scripts/transitions.js';
 import { setupNavigation, updateNavigation } from './scripts/navigation.js';
+import { siteURL, routePath } from './scripts/paths.js';
 
 const main = document.querySelector('#main');
 const productionRoutes = Object.fromEntries(Object.values(productions).map(p => [p.path, {
@@ -17,7 +18,7 @@ const routes = {
   '/kontakt/': { title: 'Kontakt', theme: 'contact', order: 2, render: contactPage },
 };
 const normalize = path => path === '/' ? '/' : `${path.replace(/\/+$/, '')}/`;
-let currentPath = normalize(location.pathname);
+let currentPath = routePath(location.pathname);
 let running = false;
 let pending = null;
 let unmountPage;
@@ -49,12 +50,12 @@ function render(path, { focus = true, hash = '', scrollY = 0 } = {}) {
 }
 async function navigate(path, options = {}) {
   path = normalize(path);
-  if (!routes[path]) { location.assign(path); return; }
+  if (!routes[path]) { location.assign(siteURL(path)); return; }
   if (running) { pending = { path, options }; return; }
   positions.set(currentKey, window.scrollY);
   // Give anchor entries their own history state, without changing the scene.
-  const destination = path + (options.hash || '');
-  if (!options.pop && destination !== location.pathname + location.hash) {
+  const destination = siteURL(path) + (options.hash || '');
+  if (!options.pop && destination !== location.origin + location.pathname + location.hash) {
     history.pushState({ sceneKey: crypto.randomUUID() }, '', destination);
   }
   const nextKey = options.key || history.state?.sceneKey;
@@ -81,6 +82,9 @@ async function navigate(path, options = {}) {
   }
 }
 setupNavigation(navigate);
-window.addEventListener('popstate', () => navigate(location.pathname, { pop: true, key: history.state?.sceneKey, hash: location.hash }));
+window.addEventListener('popstate', () => {
+  const path = routePath(location.pathname);
+  if (path !== null) navigate(path, { pop: true, key: history.state?.sceneKey, hash: location.hash });
+});
 if (routes[currentPath]) render(currentPath, { focus: false, hash: location.hash });
 else { currentPath = '/'; render('/'); }

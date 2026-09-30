@@ -1,6 +1,10 @@
 import { mountBrand } from './brand.js';
+import { routePath } from './paths.js';
 
 export function setupNavigation(navigate) {
+  // Resolve the shell's relative links once, before pushState changes the URL.
+  // Their destinations then stay stable while the persistent header stays put.
+  document.querySelectorAll('[data-route]').forEach(link => { link.href = link.href; });
   mountBrand();
   const menu = document.querySelector('#mobile-menu');
   const toggle = document.querySelector('.menu-toggle');
@@ -19,17 +23,19 @@ export function setupNavigation(navigate) {
     if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target || link.hasAttribute('download')) return;
     const url = new URL(link.href);
     if (url.origin !== location.origin) return;
+    const path = routePath(url.pathname);
+    if (path === null) return;
     const localAnchor = url.pathname === location.pathname && url.hash;
     if (!link.hasAttribute('data-route') && !localAnchor) return;
     event.preventDefault();
     if (menu.open) close();
-    navigate(url.pathname, { hash: url.hash });
+    navigate(path, { hash: url.hash });
   });
 }
 export function updateNavigation(path) {
   const activePath = path === '/' ? '/galaxy-empire/' : path;
   document.querySelectorAll('nav [data-route]').forEach(link => {
-    if (link.getAttribute('href') === activePath) link.setAttribute('aria-current', 'page');
+    if (routePath(new URL(link.href).pathname) === activePath) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   });
 }

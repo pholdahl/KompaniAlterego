@@ -16,10 +16,10 @@ export const productions = {
     evidence: galaxyEvidence,
     strapline: 'En rise and fall-historie av stort format',
     images: {
-      hero: '/assets/images/galaxy-empire/ge0005.png',
-      performance: '/assets/images/galaxy-empire/ge0003.png',
-      human: '/assets/images/galaxy-empire/ge0004.png',
-      video: '/assets/images/galaxy-empire/ge0002.png',
+      hero: 'assets/images/galaxy-empire/ge0005.png',
+      performance: 'assets/images/galaxy-empire/ge0003.png',
+      human: 'assets/images/galaxy-empire/ge0004.png',
+      video: 'assets/images/galaxy-empire/ge0002.png',
     },
     sections: ['hero', 'prologue', 'performance', 'themes', 'video', 'response', 'tour', 'practical'],
     tour: [
@@ -59,7 +59,7 @@ export const defaultProduction = 'galaxy-empire';
 export const people = [
   {
     id: 'pal', name: 'Pål André Holdahl', shortName: 'Pål', role: 'Kunstnerisk leder',
-    image: '/assets/images/company/P_0001.jpg', width: 2699, height: 2699,
+    image: 'assets/images/company/P_0001.jpg', width: 2699, height: 2699,
     alt: 'Pål André Holdahl i blått og magentafarget scenelys.',
     position: '51% 38%', facePosition: '51% 28%', faceScale: 1.35,
     biography: [
@@ -77,7 +77,7 @@ export const people = [
   },
   {
     id: 'fredrik', name: 'Fredrik André Bjerkan', shortName: 'Fredrik', role: 'Teknisk ansvarlig',
-    image: '/assets/images/company/F_0001.jpg', width: 2289, height: 2289,
+    image: 'assets/images/company/F_0001.jpg', width: 2289, height: 2289,
     alt: 'Fredrik André Bjerkan i blåfiolett lys, vendt mot venstre.',
     position: '48% 38%', facePosition: '48% 26%', faceScale: 1.35,
     biography: [
@@ -95,7 +95,7 @@ export const people = [
   },
   {
     id: 'jon-olav', name: 'Jon-Olav S. Gulbrandsen', shortName: 'Jon-Olav', role: 'Tekniker / Skuespiller / Regissør',
-    image: '/assets/images/company/JO_0001.jpg', width: 590, height: 590,
+    image: 'assets/images/company/JO_0001.jpg', width: 590, height: 590,
     alt: 'Jon-Olav S. Gulbrandsen i mørkt blått lys, med en løftet hånd i forgrunnen.',
     position: '58% 45%', facePosition: '58% 68%', faceScale: 1,
     biography: [
@@ -116,7 +116,7 @@ export const people = [
   },
   {
     id: 'nikolas', name: 'Nikolas Steffensen Krane', shortName: 'Nikolas', role: 'Tekniker / Skuespiller / Musiker',
-    image: '/assets/images/company/N_0001.jpg', width: 960, height: 958,
+    image: 'assets/images/company/N_0001.jpg', width: 960, height: 958,
     alt: 'Nikolas Steffensen Krane i en hvit T-skjorte, fotografert i varmt, naturlig lys.',
     position: '51% 40%', facePosition: '51% 16%', faceScale: 1.08,
     biography: [

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Pacifica Condensed';
-  src: url('/assets/fonts/Pacifica%20Condensed%20Regular.otf') format('opentype');
+  src: url('../assets/fonts/Pacifica%20Condensed%20Regular.otf') format('opentype');
   font-style: normal;
   font-weight: 400;
   font-display: swap;

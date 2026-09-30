@@ -1,3 +1,4 @@
+import { siteURL } from '../paths.js';
 import { people } from '../data.js';
 import { sectionLabel, footer, arrow } from '../components.js';
 
@@ -7,7 +8,7 @@ function externalLink(label, url) {
 }
 
 function portrait(person, className) {
-  return `<img class="${className}" src="${person.image}" alt="${person.alt}"
+  return `<img class="${className}" src="${siteURL(person.image)}" alt="${person.alt}"
     width="${person.width}" height="${person.height}" loading="lazy" decoding="async"
     style="--portrait-position:${person.position};--portrait-face-position:${person.facePosition};--portrait-face-scale:${person.faceScale}">`;
 }
@@ -39,7 +40,7 @@ export function companyPage() {
   <section class="people section-pad">
     <div class="people-heading"><p class="eyebrow">Velg et menneske.<br>Møt et alter ego.</p></div>
     <div class="ensemble-stage" role="group" aria-label="Ensemblet">${people.map(personPanel).join('')}</div>
-  </section><section class="company-production section-pad">${sectionLabel('02', 'På scenen nå')}<a href="/galaxy-empire/" data-route><span>Galaxy Empire</span>${arrow}</a><p>Gå inn i forestillingens univers.</p></section>${footer()}`;
+  </section><section class="company-production section-pad">${sectionLabel('02', 'På scenen nå')}<a href="${siteURL('galaxy-empire/')}" data-route><span>Galaxy Empire</span>${arrow}</a><p>Gå inn i forestillingens univers.</p></section>${footer()}`;
 }
 
 export function mountCompany(root) {

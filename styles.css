@@ -1,9 +1,9 @@
-@import url('/css/themes.css');
-@import url('/css/transitions.css');
-@import url('/css/pages.css');
-@import url('/css/brand.css');
-@import url('/css/company.css?v=6');
-@import url('/css/motion.css');
+@import url('./css/themes.css');
+@import url('./css/transitions.css');
+@import url('./css/pages.css');
+@import url('./css/brand.css');
+@import url('./css/company.css?v=6');
+@import url('./css/motion.css');
 
 * { box-sizing: border-box; }
 html { scrollbar-gutter: stable; scroll-padding-top: calc(var(--header-height) + 24px); }
